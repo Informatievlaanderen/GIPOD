@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientCredentialGrant", "ClientCredentialGrant", "{A5CD5E5B-F40E-4B3C-BEC4-73C450BAA4C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientCredentialGrant.JsonWebKey", "ClientCredentialGrant.JsonWebKey\ClientCredentialGrant.JsonWebKey.csproj", "{67143576-41A7-457D-B304-861682231E3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthorizationCodeFlow", "AuthorizationCodeFlow", "{1B509FF9-FD42-4648-85C8-081FEFEDEDCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "B2B", "B2B", "{0C6D1779-9F5C-4934-8FCD-6D08AD858B27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{DDD62FFD-6800-4496-B96E-CCF89C0D1000}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthorizationCodeFlow.B2B.JsonWebKey", "AuthorizationCodeFlow.B2B.JsonWebKey\AuthorizationCodeFlow.B2B.JsonWebKey.csproj", "{D624C58B-747F-45A4-873C-1956D080790E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OAuth.Samples.Common", "OAuth.Samples.Common\OAuth.Samples.Common.csproj", "{A2FF73B6-0DEC-4B6A-AE3E-CF62DB2C5299}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateJsonWebKey", "GenerateJsonWebKey\GenerateJsonWebKey.csproj", "{E04C5F1E-579C-410E-B4FA-84B2915C52EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthorizationCodeFlow.Web.JsonWebKey", "AuthorizationCodeFlow.Web.JsonWebKey\AuthorizationCodeFlow.Web.JsonWebKey.csproj", "{1A956AF9-CCC8-4BED-9344-059001FA5589}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67143576-41A7-457D-B304-861682231E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67143576-41A7-457D-B304-861682231E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67143576-41A7-457D-B304-861682231E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67143576-41A7-457D-B304-861682231E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D624C58B-747F-45A4-873C-1956D080790E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D624C58B-747F-45A4-873C-1956D080790E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D624C58B-747F-45A4-873C-1956D080790E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D624C58B-747F-45A4-873C-1956D080790E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FF73B6-0DEC-4B6A-AE3E-CF62DB2C5299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FF73B6-0DEC-4B6A-AE3E-CF62DB2C5299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FF73B6-0DEC-4B6A-AE3E-CF62DB2C5299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FF73B6-0DEC-4B6A-AE3E-CF62DB2C5299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E04C5F1E-579C-410E-B4FA-84B2915C52EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04C5F1E-579C-410E-B4FA-84B2915C52EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04C5F1E-579C-410E-B4FA-84B2915C52EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04C5F1E-579C-410E-B4FA-84B2915C52EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A956AF9-CCC8-4BED-9344-059001FA5589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A956AF9-CCC8-4BED-9344-059001FA5589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A956AF9-CCC8-4BED-9344-059001FA5589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A956AF9-CCC8-4BED-9344-059001FA5589}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67143576-41A7-457D-B304-861682231E3E} = {A5CD5E5B-F40E-4B3C-BEC4-73C450BAA4C2}
+		{0C6D1779-9F5C-4934-8FCD-6D08AD858B27} = {1B509FF9-FD42-4648-85C8-081FEFEDEDCE}
+		{DDD62FFD-6800-4496-B96E-CCF89C0D1000} = {1B509FF9-FD42-4648-85C8-081FEFEDEDCE}
+		{D624C58B-747F-45A4-873C-1956D080790E} = {0C6D1779-9F5C-4934-8FCD-6D08AD858B27}
+		{1A956AF9-CCC8-4BED-9344-059001FA5589} = {DDD62FFD-6800-4496-B96E-CCF89C0D1000}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F85D3218-F19A-4C7D-96D9-9596330F5544}
+	EndGlobalSection
+EndGlobal

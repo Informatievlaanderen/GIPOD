@@ -1,0 +1,51 @@
+﻿@model AuthorizationCodeFlow.Web.JsonWebKey.Models.SearchModel
+
+<div class="card">
+    <table>
+        <tr>
+            <td>Access token</td>
+            <td>@Model.OAuthResponse.AccessToken</td>
+        </tr>
+        <tr>
+            <td>Scope</td>
+            <td>@Model.OAuthResponse.Scope</td>
+        </tr>
+        <tr>
+            <td>Refresh token</td>
+            <td>@Model.OAuthResponse.RefreshToken</td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+<form asp-controller="OAuth" asp-action="ExchangeRefreshToken" method="post" role="form">
+    <button class="btn btn-primary" type="submit">Exchange access token</button>
+</form>
+
+<hr />
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#detoursCollapse" aria-expanded="false" aria-controls="detoursCollapse">
+    Detours
+</button>
+<div class="collapse" id="detoursCollapse">
+    <div class="card card-body">
+        @Html.TextAreaFor(x => x.Detours, new { style = "width:100%;height:500px;@readonly=readonly;" })
+    </div>
+</div>
+<hr />
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#mobilityHindrancesCollapse" aria-expanded="false" aria-controls="mobilityHindrancesCollapse">
+    Mobility hindrances
+</button>
+<div class="collapse" id="mobilityHindrancesCollapse">
+    <div class="card card-body">
+        @Html.TextAreaFor(x => x.MobilityHindrances, new { style = "width:100%;height:500px;@readonly=readonly;" });
+    </div>
+</div>
+<hr />
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#publicDomainOccupanciesCollapse" aria-expanded="false" aria-controls="publicDomainOccupanciesCollapse">
+    Public domain occupancies
+</button>
+<div class="collapse" id="publicDomainOccupanciesCollapse">
+    <div class="card card-body">
+        @Html.TextAreaFor(x => x.PublicDomainOccupancies, new { style = "width:100%;height:500px;@readonly=readonly;" })
+    </div>
+</div>
