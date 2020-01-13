@@ -12,7 +12,7 @@ https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1313309195/Release+N
 
 ## Support
 
-Tijdens de ontwikkeling worden alle vragen, suggesties , bugs behandeled door het GIPOD project-team. Deze kunnen als issues ingebracht worden in de de GIPOD GitHub repository van Agentschap Informatie Vlaanderen.
+Tijdens de ontwikkeling worden alle vragen, suggesties en bugs behandeled door het GIPOD project-team. Deze kunnen als [https://github.com/Informatievlaanderen/GIPOD/issues/new/choose](issue) ingebracht worden in de de GIPOD GitHub repository van Agentschap Informatie Vlaanderen.
 
 Tijdens de productie fase zal de dan geldende support flow binnen Informatie Vlaanderen van toepassing worden.
 
