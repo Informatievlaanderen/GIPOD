@@ -1,7 +1,7 @@
 # GIPOD²
 Het [Generiek Informatie Platform Openbaar Domein](https://overheid.vlaanderen.be/informatie-vlaanderen/producten-diensten/generiek-informatieplatform-openbaar-domein-gipod) wordt in de periode 2019-2021 vernieuwd. 
 
-Alle informatie over vernieuwde GIPOD is te vinden op de [GIPOD² Cocreatie site](https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/overview)
+Alle informatie over het vernieuwde GIPOD is te vinden op de [GIPOD² Cocreatie site](https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/overview)
 
 ## Voor ontwikkelaars / For developers
 ### API Documentation
