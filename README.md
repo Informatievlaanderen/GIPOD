@@ -7,6 +7,9 @@ Alle informatie over het vernieuwde GIPOD is te vinden op de [GIPOD² Cocreatie 
 ### API Documentation
 https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1245610719/API+documentation
 
+### Functionele modules ###
+https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1242236777/Functionele+modules
+
 ### Release Notes
 https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1313309195/Release+Notes
 
