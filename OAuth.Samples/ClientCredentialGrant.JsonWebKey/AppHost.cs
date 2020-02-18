@@ -88,7 +88,7 @@ namespace ClientCredentialGrant.JsonWebKey
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Expires = DateTime.UtcNow.AddMinutes(960),
-                SigningCredentials = new SigningCredentials(jwk, SecurityAlgorithms.RsaSha256Signature),
+                SigningCredentials = new SigningCredentials(jwk, SecurityAlgorithms.RsaSha512Signature),
                 Subject = new ClaimsIdentity(new List<Claim>
                 {
                     new Claim("sub", oAuthOptions.ClientId.ToString()),
