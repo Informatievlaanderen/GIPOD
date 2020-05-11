@@ -17,4 +17,4 @@ A clear and concise description of what you expected to happen.
 Add any other context about the problem here.
 
 **Correlation id and request**
-If you have an issue with an API request, please provide the correlation id and request.
+If you have an issue with an API request, please provide the correlation id (found in the response header) and request.
