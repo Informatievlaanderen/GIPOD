@@ -13,6 +13,9 @@ https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1242236777/Functione
 ### Release Notes
 https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1313309195/Release+Notes
 
+### FAQ & scenario's
+Er zijn een aantal scenario's en veelgestelde vragen te vinden op onze confluence pagina: https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1661796393/FAQ+scenario+s
+
 ## Support
 
 Tijdens de ontwikkeling worden alle vragen, suggesties en bugs behandeled door het GIPOD project-team. Deze kunnen als [issue](https://github.com/Informatievlaanderen/GIPOD/issues/new/choose) ingebracht worden in de de GIPOD GitHub repository van Agentschap Informatie Vlaanderen.
