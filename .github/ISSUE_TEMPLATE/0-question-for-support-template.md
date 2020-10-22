@@ -1,8 +1,8 @@
 ---
-name: Question for Support template
-about: Describe this issue template's purpose here.
+name: Question
+about: Describe your question here.
 title: ''
-labels: help wanted
+labels: 
 assignees: ''
 
 ---
