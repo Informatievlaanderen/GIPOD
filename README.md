@@ -3,6 +3,8 @@ Het [Generiek Informatie Platform Openbaar Domein](https://overheid.vlaanderen.b
 
 Alle informatie over het vernieuwde GIPOD is te vinden op de [GIPOD² Cocreatie site](https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/overview)
 
+Tijdens het vernieuwingstraject worden geregeld werkgroepen, en vragenuurtjes georganiseerd, meer ingormatie op https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1267598395/Kalender+werkgroepen 
+
 ## Voor ontwikkelaars / For developers
 ### API Documentation
 https://vlaamseoverheid.atlassian.net/wiki/spaces/NGC/pages/1245610719/API+documentation
