@@ -1,5 +1,5 @@
 # GIPOD²
-*Deze GitHub pagina is bedoeld voor ontwikkelaars, en voorziet een rechtstreeks ondersteuningskanaal voor integratoren die gegevens uitwisselen via de GIPOD REST API. Voor inhoudelijke vragen, en vragen rond de GIPOD GUI, gelieve contact op te nemen via [informatie.vlaanderen@vlaanderen.be]: mailto:informatie.vlaanderen@vlaanderen.be*
+*Deze GitHub pagina is bedoeld voor ontwikkelaars, en voorziet een rechtstreeks ondersteuningskanaal voor integratoren die gegevens uitwisselen via de GIPOD REST API. Voor inhoudelijke vragen, en vragen rond de GIPOD GUI, gelieve contact op te nemen via informatie.vlaanderen@vlaanderen.be*
 
 Het [Generiek Informatie Platform Openbaar Domein](https://overheid.vlaanderen.be/informatie-vlaanderen/producten-diensten/generiek-informatieplatform-openbaar-domein-gipod) wordt in de periode 2019-2021 vernieuwd. 
 
