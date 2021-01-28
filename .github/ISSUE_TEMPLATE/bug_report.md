@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Create a report regarding technical integrations, for non-technical bugs in the GIPOD UI, please contact informatie.vlaanderen@vlaanderen.be
 title: ''
 labels: bug
 assignees: ''
