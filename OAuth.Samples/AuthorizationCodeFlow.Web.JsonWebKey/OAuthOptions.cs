@@ -12,5 +12,9 @@ namespace AuthorizationCodeFlow.Web.JsonWebKey
         public string State { get; set; }
         public Uri AuthorizeEndpoint { get; set; }
         public Uri TokenEndpoint { get; set; }
+        public Uri IdentityEndpoint { get; set; }
+        public string ResourceServerCertificateKey { get; set; }
+
+        public TokenExchangeOptions TokenExchange { get; set; }
     }
 }

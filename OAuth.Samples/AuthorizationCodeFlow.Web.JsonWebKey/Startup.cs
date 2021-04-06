@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AuthorizationCodeFlow.Web.JsonWebKey.OAuth;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +28,7 @@ namespace AuthorizationCodeFlow.Web.JsonWebKey
 
             services.AddDbContext<OAuthDbContext>(options => options.UseInMemoryDatabase(databaseName: "OAuthDB"));
             services.AddScoped<IDataProvider, DataProvider>();
-
+            services.AddScoped<ICertificateRetriever, LocalCertificateRetriever>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
