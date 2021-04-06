@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -83,7 +84,6 @@ namespace ClientCredentialGrant.JsonWebKey
         private string CreateJwtClientAssertion(OAuthOptions oAuthOptions,
             Microsoft.IdentityModel.Tokens.JsonWebKey jwk)
         {
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
