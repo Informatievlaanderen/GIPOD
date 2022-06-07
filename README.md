@@ -22,7 +22,7 @@ Er zijn een aantal scenario's en veelgestelde vragen te vinden op onze confluenc
 
 ## Support
 
-Tijdens de ontwikkeling worden alle technische vragen en bugs behandeled door het GIPOD project-team. Deze kunnen als [issue](https://github.com/Informatievlaanderen/GIPOD/issues/new/choose) ingebracht worden in de de GIPOD GitHub repository van Agentschap Informatie Vlaanderen. Inhoudelijke vragen, of vragen rond de GIPOD GUI kunnen gesteld worden via [informatie.vlaanderen@vlaanderen.be]: mailto:informatie.vlaanderen@vlaanderen.be 
+Tijdens de ontwikkeling worden alle technische vragen en bugs behandeled door het GIPOD project-team. Deze kunnen als [issue](https://github.com/Informatievlaanderen/GIPOD/issues/new/choose) ingebracht worden in de de GIPOD GitHub repository van Agentschap Informatie Vlaanderen. Inhoudelijke vragen, of vragen rond de GIPOD GUI kunnen gesteld worden via [digitaal.vlaanderen@vlaanderen.be]: mailto:digitaal.vlaanderen@vlaanderen.be 
 
 Tijdens de productie fase zal de dan geldende support flow binnen Informatie Vlaanderen van toepassing worden.
 
