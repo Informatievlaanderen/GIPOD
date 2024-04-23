@@ -7,7 +7,24 @@
   body { font-family: Arial, sans-serif; padding: 20px; }
   label, input, button, a { display: block; margin-top: 10px; }
   input, button, a { width: 300px; padding: 8px; }
-  button { background-color: #4CAF50; color: white; cursor: pointer; }
+  button { background-color: #4CAF50; color: white; cursor: pointer; position: relative; }
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   a { background-color: #007BFF; color: white; text-align: center; text-decoration: none; padding-top: 5px; }
 </style>
 </head>
@@ -71,7 +88,7 @@
     <label for="Limit">Limit Results:</label>
     <input type="number" id="Limit" value="100">
 
-    <button type="button" onclick="submitQuery()">Fetch Data</button>
+    <button type="button" id="fetchButton" onclick="submitQuery()">Fetch Data</button>
 </form>
 
 <a href="#" id="apiLink">Open API Link</a>
@@ -106,14 +123,22 @@
   }
 
   function submitQuery() {
+    const button = document.getElementById('fetchButton');
+    button.innerHTML = 'Fetching Data <div class="spinner"></div>'; // Show spinner
+    button.disabled = true; // Disable button while fetching
+    
     const url = document.getElementById('apiLink').href;
     fetch(url)
       .then(response => response.json())
       .then(data => {
         document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+        button.innerHTML = 'Fetch Data'; // Restore button text
+        button.disabled = false; // Enable button        
       })
       .catch(error => {
         document.getElementById('output').textContent = 'Error: ' + error.message;
+        button.innerHTML = 'Fetch Data'; // Restore button text in case of error
+        button.disabled = false; // Re-enable button        
       });
   }
 </script>
