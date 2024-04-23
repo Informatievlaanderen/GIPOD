@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OGC API Features Example - GIPOD Collections</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  button, a { margin: 5px; padding: 10px; display: inline-block; }
+  input, textarea { width: 100%; margin-top: 5px; }
+  textarea { height: 200px; }
+  #apiLink { margin-top: 10px; }
+</style>
+</head>
+<body>
+<h1>OGC API Features Request Tester for GIPOD</h1>
+  <h2>Examples per collection</h2>
+  <a href="./inname.html">Inname</a><br/>
+  <a href="./hinder.html">Hinder</a><br/>
+  <a href="./hindergevolg.html">Hindergevolg</a>
+  
+
+  <h2>Filter by GipodId</h2>
+<label for="gipodId">Enter GipodId as integer:</label>
+<input type="number" id="gipodId" placeholder="GipodId">
+<button onclick="filterByGipodId('INNAME_PUNT', 'GipodId')">Filter INNAME_PUNT by GipodId</button>
+<button onclick="filterByGipodId('HINDER_PUNT', 'HindranceGipodId')">Filter HINDER_PUNT by GipodId</button>
+<button onclick="filterByGipodId('HINDERGEVOLG_PUNT', 'HindranceGipodId')">Filter HINDERGEVOLG_PUNT by GipodId</button>
+<button onclick="filterByGipodId('INNAME', 'GipodId')">Filter INNAME by GipodId</button>
+<button onclick="filterByGipodId('HINDER', 'HindranceGipodId')">Filter HINDER by GipodId</button>
+<button onclick="filterByGipodId('HINDERGEVOLG', 'HindranceGipodId')">Filter HINDERGEVOLG by GipodId</button>
+
+<a href="#" id="apiLink" target="_blank">Open API Link</a>
+
+<textarea id="output">Results will appear here...</textarea>
+
+<script>
+  const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/';
+
+  function makeRequest(collection, filter) {
+    const encodedFilter = encodeURIComponent(filter);
+    const fullUrl = `${baseUrl}${collection}/items?filter=${encodedFilter}`;
+    fetch(fullUrl)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output').value = JSON.stringify(data, null, 2);
+        document.getElementById('apiLink').href = fullUrl;
+        document.getElementById('apiLink').textContent = 'Open API Link';
+      })
+      .catch(error => {
+        document.getElementById('output').value = `Error: ${error}`;
+        document.getElementById('apiLink').href = "#";
+        document.getElementById('apiLink').textContent = 'Invalid link (error occurred)';
+      });
+  }
+
+  function filterByGipodId(collection, gipodIdProperty) {
+    const gipodId = document.getElementById('gipodId').value;
+    if (gipodId) {
+      makeRequest(collection, `${gipodIdProperty} = ${gipodId}`);
+    } else {
+      alert('Please enter a valid GipodId.');
+    }
+  }
+</script>
+</body>
+</html>

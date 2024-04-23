@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>INNAME Collection Query Form</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  label, input, button, a { display: block; margin-top: 10px; }
+  input, button, a { width: 300px; padding: 8px; }
+  button { background-color: #4CAF50; color: white; cursor: pointer; position: relative; }
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  a { background-color: #007BFF; color: white; text-align: center; text-decoration: none; padding-top: 5px; }
+</style>
+</head>
+<body>
+<h1>Query INNAME Collection</h1>
+<form id="queryForm">
+    <label for="GipodId">GipodId:</label>
+    <input type="number" id="GipodId">
+
+    <label for="Uri">Uri:</label>
+    <input type="text" id="Uri">
+
+    <label for="Description">Description:</label>
+    <input type="text" id="Description">
+
+    <label for="Reference">Reference:</label>
+    <input type="text" id="Reference">
+
+    <label for="Type">Type:</label>
+    <input type="text" id="Type">
+
+    <label for="TypeId">TypeId:</label>
+    <input type="text" id="TypeId">
+
+    <label for="PublicDomainOccupancyTypes">PublicDomainOccupancyTypes:</label>
+    <input type="text" id="PublicDomainOccupancyTypes">
+
+    <label for="Status">Status:</label>
+    <input type="text" id="Status">
+
+    <label for="StatusId">StatusId:</label>
+    <input type="text" id="StatusId">
+
+    <label for="TimeSchedule">TimeSchedule:</label>
+    <input type="text" id="TimeSchedule">
+
+    <label for="Owner">Owner:</label>
+    <input type="text" id="Owner">
+
+    <label for="OwnerId">OwnerId:</label>
+    <input type="text" id="OwnerId">
+
+    <label for="ContactOrganisations">ContactOrganisations:</label>
+    <input type="text" id="ContactOrganisations">
+
+    <label for="MobilityHindrances">MobilityHindrances:</label>
+    <input type="text" id="MobilityHindrances">
+
+    <label for="GroundworkCategory">GroundworkCategory:</label>
+    <input type="text" id="GroundworkCategory">
+
+    <label for="GroundworkCategoryId">GroundworkCategoryId:</label>
+    <input type="text" id="GroundworkCategoryId">
+
+    <label for="GroundworkSpecification">GroundworkSpecification:</label>
+    <input type="text" id="GroundworkSpecification">
+
+    <label for="GroundworkPartOfTrenchSynergy">GroundworkPartOfTrenchSynergy:</label>
+    <input type="text" id="GroundworkPartOfTrenchSynergy">
+
+    <label for="Limit">Limit Results:</label>
+    <input type="number" id="Limit" value="100">
+
+    <button type="button" id="fetchButton" onclick="submitQuery()">Fetch Data</button>
+</form>
+
+<a href="#" id="apiLink">Open API Link</a>
+<pre id="output"></pre>
+
+<script>
+  document.getElementById('queryForm').addEventListener('input', generateLink);
+  document.addEventListener('DOMContentLoaded', function() {
+    generateLink(); // Call this function on page load to initialize the link
+  });
+  function generateLink() {
+    const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/INNAME_PUNT/items';
+    let filters = [];
+    let limit = document.getElementById('Limit').value || 100;
+
+    // Construct the filter part of the query string from input fields, excluding the limit
+    document.querySelectorAll('#queryForm input[type="text"], #queryForm input[type="number"]:not(#Limit), #queryForm input[type="date"]').forEach(input => {
+      let value = input.value.trim();
+      if (value !== '') {
+        // Check if the input type is 'text' to encapsulate string values in single quotes
+        value = input.type === 'text' ? `'${value}'` : value;
+        filters.push(`${input.id} = ${value}`);
+      }
+    });
+
+    const filterQuery = filters.length > 0 ? `filter=${encodeURIComponent(filters.join(' AND '))}&` : '';
+    const fullUrl = `${baseUrl}?${filterQuery}limit=${limit}`;
+
+    const linkElement = document.getElementById('apiLink');
+    linkElement.href = fullUrl;
+    linkElement.textContent = 'Open API Link';
+  }
+
+  function submitQuery() {
+    const button = document.getElementById('fetchButton');
+    button.innerHTML = 'Fetching Data <div class="spinner"></div>'; // Show spinner
+    button.disabled = true; // Disable button while fetching
+    
+    const url = document.getElementById('apiLink').href;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+        button.innerHTML = 'Fetch Data'; // Restore button text
+        button.disabled = false; // Enable button        
+      })
+      .catch(error => {
+        document.getElementById('output').textContent = 'Error: ' + error.message;
+        button.innerHTML = 'Fetch Data'; // Restore button text in case of error
+        button.disabled = false; // Re-enable button        
+      });
+  }
+</script>
+</body>
+</html>
