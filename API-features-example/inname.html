@@ -50,6 +50,9 @@
     <label for="ownerId">OwnerId:</label>
     <input type="text" id="ownerId">
 
+    <label for="limit">Limit Results:</label>
+    <input type="number" id="limit" value="100"> <!-- Configurable limit for API results -->
+
     <button type="button" onclick="submitQuery()">Submit Query</button>
 </form>
 
@@ -59,19 +62,20 @@
 <script>
   function submitQuery() {
     const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/INNAME/items';
-    let query = '?';
+    let filterQuery = '?';
+    let limit = document.getElementById('limit').value || 100;
 
-    // Gather input values and construct the query string
+    // Gather input values and construct the filter query string
     document.querySelectorAll('#queryForm input').forEach(input => {
-      if (input.value) {
-        query += `${encodeURIComponent(input.id)}=${encodeURIComponent(input.value)}&`;
+      if (input.value && input.id !== 'limit') {
+        filterQuery += `${encodeURIComponent(input.id)}=${encodeURIComponent(input.value)}&`;
       }
     });
 
-    // Remove the trailing ampersand
-    query = query.slice(0, -1);
+    // Append the limit to the query
+    filterQuery += `limit=${limit}`;
 
-    const fullUrl = baseUrl + query;
+    const fullUrl = baseUrl + filterQuery;
     document.getElementById('apiLink').href = fullUrl;
     document.getElementById('apiLink').textContent = 'Open API Link';
 
