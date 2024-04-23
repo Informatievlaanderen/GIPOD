@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HINDER Collection Query Form</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  label, input, button, a { display: block; margin-top: 10px; }
+  input, button, a { width: 300px; padding: 8px; }
+  button { background-color: #4CAF50; color: white; cursor: pointer; }
+  a { background-color: #007BFF; color: white; text-align: center; text-decoration: none; padding-top: 5px; }
+</style>
+</head>
+<body>
+<h1>Query HINDER Collection</h1>
+<form id="queryForm">
+    <label for="ZoneId">ZoneId:</label>
+    <input type="text" id="ZoneId">
+
+    <label for="SevereHindrance">SevereHindrance (true/false):</label>
+    <input type="text" id="SevereHindrance">
+
+    <label for="Uri">Uri:</label>
+    <input type="text" id="Uri">
+
+    <label for="ZoneType">ZoneType:</label>
+    <input type="text" id="ZoneType">
+
+    <label for="ZoneTypeId">ZoneTypeId:</label>
+    <input type="text" id="ZoneTypeId">
+
+    <label for="Consequences">Consequences:</label>
+    <input type="text" id="Consequences">
+
+    <label for="HindranceGipodId">HindranceGipodId:</label>
+    <input type="number" id="HindranceGipodId">
+
+    <label for="HindranceURI">HindranceURI:</label>
+    <input type="text" id="HindranceURI">
+
+    <label for="HindranceConsequenceOf">HindranceConsequenceOf:</label>
+    <input type="text" id="HindranceConsequenceOf">
+
+    <label for="HindranceDescription">HindranceDescription:</label>
+    <input type="text" id="HindranceDescription">
+
+    <label for="HindranceOwner">HindranceOwner:</label>
+    <input type="text" id="HindranceOwner">
+
+    <label for="HindranceOwnerId">HindranceOwnerId:</label>
+    <input type="text" id="HindranceOwnerId">
+
+    <label for="HindranceStart">HindranceStart (Date):</label>
+    <input type="date" id="HindranceStart">
+
+    <label for="HindranceEnd">HindranceEnd (Date):</label>
+    <input type="date" id="HindranceEnd">
+
+    <label for="HindranceContactOrganisations">HindranceContactOrganisations:</label>
+    <input type="text" id="HindranceContactOrganisations">
+
+    <label for="HindranceStatus">HindranceStatus:</label>
+    <input type="text" id="HindranceStatus">
+
+    <label for="HindranceStatusId">HindranceStatusId:</label>
+    <input type="text" id="HindranceStatusId">
+
+    <label for="Limit">Limit Results:</label>
+    <input type="number" id="Limit" value="100">
+
+    <button type="button" onclick="submitQuery()">Fetch Data</button>
+</form>
+
+<a href="#" id="apiLink">Open API Link</a>
+<pre id="output"></pre>
+
+<script>
+  document.getElementById('queryForm').addEventListener('input', generateLink);
+
+  function generateLink() {
+    const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/HINDER/items';
+    let filters = [];
+    let limit = document.getElementById('Limit').value || 100;
+
+    // Construct the filter part of the query string from input fields, excluding the limit
+    document.querySelectorAll('#queryForm input[type="text"], #queryForm input[type="number"]:not(#Limit), #queryForm input[type="date"]').forEach(input => {
+      if (input.value.trim() !== '') {
+        filters.push(`${input.id}=${input.value}`);
+      }
+    });
+
+    const filterQuery = filters.length > 0 ? `filter=${encodeURIComponent(filters.join(' AND '))}&` : '';
+    const fullUrl = `${baseUrl}?${filterQuery}limit=${limit}`;
+
+    const linkElement = document.getElementById('apiLink');
+    linkElement.href = fullUrl;
+    linkElement.textContent = 'Open API Link';
+  }
+
+  function submitQuery() {
+    const url = document.getElementById('apiLink').href;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById('output').textContent = 'Error: ' + error.message;
+      });
+  }
+</script>
+</body>
+</html>
