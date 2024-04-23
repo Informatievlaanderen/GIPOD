@@ -91,10 +91,6 @@
     generateLink(); // Call this function on page load to initialize the link
   });
   function generateLink() {
-    const button = document.getElementById('fetchButton');
-    button.innerHTML = 'Fetching Data <div class="spinner"></div>'; // Show spinner
-    button.disabled = true; // Disable button while fetching
-    
     const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/HINDER_PUNT/items';
     let filters = [];
     let limit = document.getElementById('Limit').value || 100;
@@ -118,6 +114,10 @@
   }
 
   function submitQuery() {
+    const button = document.getElementById('fetchButton');
+    button.innerHTML = 'Fetching Data <div class="spinner"></div>'; // Show spinner
+    button.disabled = true; // Disable button while fetching
+    
     const url = document.getElementById('apiLink').href;
     fetch(url)
       .then(response => response.json())
