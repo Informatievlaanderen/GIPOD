@@ -8,86 +8,122 @@
   label, input, button, a { display: block; margin-top: 10px; }
   input, button, a { width: 300px; padding: 8px; }
   button { background-color: #4CAF50; color: white; cursor: pointer; }
-  a { background-color: #007BFF; color: white; text-align: center; text-decoration: none; }
+  a { background-color: #007BFF; color: white; text-align: center; text-decoration: none; padding-top: 5px; }
 </style>
 </head>
 <body>
 <h1>Query INNAME Collection</h1>
 <form id="queryForm">
-    <label for="gipodId">GipodId:</label>
-    <input type="number" id="gipodId">
+    <label for="GipodId">GipodId:</label>
+    <input type="number" id="GipodId">
 
-    <label for="uri">Uri:</label>
-    <input type="text" id="uri">
+    <label for="Uri">Uri:</label>
+    <input type="text" id="Uri">
 
-    <label for="description">Description:</label>
-    <input type="text" id="description">
+    <label for="Description">Description:</label>
+    <input type="text" id="Description">
 
-    <label for="reference">Reference:</label>
-    <input type="text" id="reference">
+    <label for="Reference">Reference:</label>
+    <input type="text" id="Reference">
 
-    <label for="type">Type:</label>
-    <input type="text" id="type">
+    <label for="Type">Type:</label>
+    <input type="text" id="Type">
 
-    <label for="typeId">TypeId:</label>
-    <input type="text" id="typeId">
+    <label for="TypeId">TypeId:</label>
+    <input type="text" id="TypeId">
 
-    <label for="status">Status:</label>
-    <input type="text" id="status">
+    <label for="PublicDomainOccupancyTypes">PublicDomainOccupancyTypes:</label>
+    <input type="text" id="PublicDomainOccupancyTypes">
 
-    <label for="statusId">StatusId:</label>
-    <input type="text" id="statusId">
+    <label for="Status">Status:</label>
+    <input type="text" id="Status">
 
-    <label for="start">Start Date:</label>
-    <input type="date" id="start">
+    <label for="StatusId">StatusId:</label>
+    <input type="text" id="StatusId">
 
-    <label for="end">End Date:</label>
-    <input type="date" id="end">
+    <label for="Start">Start (Date):</label>
+    <input type="date" id="Start">
 
-    <label for="owner">Owner:</label>
-    <input type="text" id="owner">
+    <label for="End">End (Date):</label>
+    <input type="date" id="End">
 
-    <label for="ownerId">OwnerId:</label>
-    <input type="text" id="ownerId">
+    <label for="TimeSchedule">TimeSchedule:</label>
+    <input type="text" id="TimeSchedule">
 
-    <label for="limit">Limit Results:</label>
-    <input type="number" id="limit" value="100"> <!-- Configurable limit for API results -->
+    <label for="Owner">Owner:</label>
+    <input type="text" id="Owner">
 
-    <button type="button" onclick="submitQuery()">Submit Query</button>
+    <label for="OwnerId">OwnerId:</label>
+    <input type="text" id="OwnerId">
+
+    <label for="ContactOrganisations">ContactOrganisations:</label>
+    <input type="text" id="ContactOrganisations">
+
+    <label for="MobilityHindrances">MobilityHindrances:</label>
+    <input type="text" id="MobilityHindrances">
+
+    <label for="GroundworkCategory">GroundworkCategory:</label>
+    <input type="text" id="GroundworkCategory">
+
+    <label for="GroundworkCategoryId">GroundworkCategoryId:</label>
+    <input type="text" id="GroundworkCategoryId">
+
+    <label for="GroundworkSpecification">GroundworkSpecification:</label>
+    <input type="text" id="GroundworkSpecification">
+
+    <label for="GroundworkPartOfTrenchSynergy">GroundworkPartOfTrenchSynergy:</label>
+    <input type="text" id="GroundworkPartOfTrenchSynergy">
+
+    <label for="CreatedOn">CreatedOn (Date):</label>
+    <input type="date" id="CreatedOn">
+
+    <label for="LastModifiedOn">LastModifiedOn (Date):</label>
+    <input type="date" id="LastModifiedOn">
+
+    <label for="Geometry">Geometry (MultiPolygon):</label>
+    <input type="text" id="Geometry">
+
+    <label for="Limit">Limit Results:</label>
+    <input type="number" id="Limit" value="100">
+
+    <button type="button" onclick="submitQuery()">Fetch Data</button>
 </form>
 
-<a href="#" id="apiLink" target="_blank">Open API Link</a>
+<a href="#" id="apiLink">Open API Link</a>
 <pre id="output"></pre>
 
 <script>
-  function submitQuery() {
-    const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/INNAME/items';
-    let filterQuery = '?';
-    let limit = document.getElementById('limit').value || 100;
+  document.getElementById('queryForm').addEventListener('input', generateLink);
 
-    // Gather input values and construct the filter query string
-    document.querySelectorAll('#queryForm input').forEach(input => {
-      if (input.value && input.id !== 'limit') {
-        filterQuery += `${encodeURIComponent(input.id)}=${encodeURIComponent(input.value)}&`;
+  function generateLink() {
+    const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/INNAME_PUNT/items';
+    let filters = [];
+    let limit = document.getElementById('Limit').value || 100;
+
+    // Construct the filter part of the query string from input fields, excluding the limit
+    document.querySelectorAll('#queryForm input[type="text"], #queryForm input[type="number"]:not(#Limit), #queryForm input[type="date"]').forEach(input => {
+      if (input.value.trim() !== '') {
+        filters.push(`${input.id}=${input.value}`);
       }
     });
 
-    // Append the limit to the query
-    filterQuery += `limit=${limit}`;
+    const filterQuery = filters.length > 0 ? `filter=${encodeURIComponent(filters.join(' AND '))}&` : '';
+    const fullUrl = `${baseUrl}?${filterQuery}limit=${limit}`;
 
-    const fullUrl = baseUrl + filterQuery;
-    document.getElementById('apiLink').href = fullUrl;
-    document.getElementById('apiLink').textContent = 'Open API Link';
+    const linkElement = document.getElementById('apiLink');
+    linkElement.href = fullUrl;
+    linkElement.textContent = 'Open API Link';
+  }
 
-    fetch(fullUrl)
+  function submitQuery() {
+    const url = document.getElementById('apiLink').href;
+    fetch(url)
       .then(response => response.json())
       .then(data => {
         document.getElementById('output').textContent = JSON.stringify(data, null, 2);
       })
       .catch(error => {
         document.getElementById('output').textContent = 'Error: ' + error.message;
-        document.getElementById('apiLink').textContent = 'Invalid link (error occurred)';
-        document.getElementById('apiLink').href = "#";
       });
   }
 </script>
