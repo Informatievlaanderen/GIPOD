@@ -89,7 +89,8 @@
       if (input.value.trim() !== '') {
         // Check if the input type is 'text' to encapsulate string values in single quotes
         value = input.type === 'text' ? `'${value}'` : value;
-        filters.push(`${input.id} = ${value}`);      }
+        filters.push(`${input.id} = ${value}`);      
+      }
     });
 
     const filterQuery = filters.length > 0 ? `filter=${encodeURIComponent(filters.join(' AND '))}&` : '';
