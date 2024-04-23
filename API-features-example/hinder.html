@@ -76,7 +76,9 @@
 
 <script>
   document.getElementById('queryForm').addEventListener('input', generateLink);
-
+  document.addEventListener('DOMContentLoaded', function() {
+    generateLink(); // Call this function on page load to initialize the link
+  });
   function generateLink() {
     const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/HINDER_PUNT/items';
     let filters = [];
