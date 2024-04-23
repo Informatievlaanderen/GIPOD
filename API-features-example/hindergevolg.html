@@ -123,7 +123,9 @@
     // Construct the filter part of the query string from input fields, excluding the limit
     document.querySelectorAll('#queryForm input[type="text"], #queryForm input[type="number"]:not(#Limit), #queryForm input[type="date"]').forEach(input => {
       if (input.value.trim() !== '') {
-        filters.push(`${input.id}=${input.value}`);
+        // Check if the input type is 'text' to encapsulate string values in single quotes
+        value = input.type === 'text' ? `'${value}'` : value;
+        filters.push(`${input.id} = ${value}`);      }
       }
     });
 
