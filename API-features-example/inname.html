@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>INNAME Collection Query Form</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  label, input, button, a { display: block; margin-top: 10px; }
+  input, button, a { width: 300px; padding: 8px; }
+  button { background-color: #4CAF50; color: white; cursor: pointer; }
+  a { background-color: #007BFF; color: white; text-align: center; text-decoration: none; }
+</style>
+</head>
+<body>
+<h1>Query INNAME Collection</h1>
+<form id="queryForm">
+    <label for="gipodId">GipodId:</label>
+    <input type="number" id="gipodId">
+
+    <label for="uri">Uri:</label>
+    <input type="text" id="uri">
+
+    <label for="description">Description:</label>
+    <input type="text" id="description">
+
+    <label for="reference">Reference:</label>
+    <input type="text" id="reference">
+
+    <label for="type">Type:</label>
+    <input type="text" id="type">
+
+    <label for="typeId">TypeId:</label>
+    <input type="text" id="typeId">
+
+    <label for="status">Status:</label>
+    <input type="text" id="status">
+
+    <label for="statusId">StatusId:</label>
+    <input type="text" id="statusId">
+
+    <label for="start">Start Date:</label>
+    <input type="date" id="start">
+
+    <label for="end">End Date:</label>
+    <input type="date" id="end">
+
+    <label for="owner">Owner:</label>
+    <input type="text" id="owner">
+
+    <label for="ownerId">OwnerId:</label>
+    <input type="text" id="ownerId">
+
+    <button type="button" onclick="submitQuery()">Submit Query</button>
+</form>
+
+<a href="#" id="apiLink" target="_blank">Open API Link</a>
+<pre id="output"></pre>
+
+<script>
+  function submitQuery() {
+    const baseUrl = 'https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/INNAME/items';
+    let query = '?';
+
+    // Gather input values and construct the query string
+    document.querySelectorAll('#queryForm input').forEach(input => {
+      if (input.value) {
+        query += `${encodeURIComponent(input.id)}=${encodeURIComponent(input.value)}&`;
+      }
+    });
+
+    // Remove the trailing ampersand
+    query = query.slice(0, -1);
+
+    const fullUrl = baseUrl + query;
+    document.getElementById('apiLink').href = fullUrl;
+    document.getElementById('apiLink').textContent = 'Open API Link';
+
+    fetch(fullUrl)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById('output').textContent = 'Error: ' + error.message;
+        document.getElementById('apiLink').textContent = 'Invalid link (error occurred)';
+        document.getElementById('apiLink').href = "#";
+      });
+  }
+</script>
+</body>
+</html>
