@@ -33,9 +33,9 @@
 <h2>Select Environment</h2>
 <label for="environment">Choose an environment:</label>
 <select id="environment" onchange="updateBaseUrl()">
-  <option value="https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/">Production</option>
-  <option value="https://geo.api.beta-vlaanderen.be/GIPOD/ogc/features/v1/collections/">Beta</option>
-  <option value="https://geo.api.test-vlaanderen.be/GIPOD/ogc/features/v1/collections/">Test</option>
+  <option value="https://geo.api.vlaanderen.be/GIPOD/ogc/features/v1/collections/OMLEIDINGGEVOLG_PUNT/items">Production</option>
+  <option value="https://geo.api.beta-vlaanderen.be/GIPOD/ogc/features/v1/collections/OMLEIDINGGEVOLG_PUNT/items">Beta</option>
+  <option value="https://geo.api.test-vlaanderen.be/GIPOD/ogc/features/v1/collections/OMLEIDINGGEVOLG_PUNT/items">Test</option>
 </select>
 <form id="queryForm">
     <label for="DiversionId">DiversionId:</label>
@@ -90,6 +90,7 @@
 
   function updateBaseUrl() {
     baseUrl = document.getElementById('environment').value;
+	generateLink();
   }
 
   function generateLink() {   
